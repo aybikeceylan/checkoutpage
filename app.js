@@ -15,13 +15,22 @@ plus.forEach(item => {
         proTotal = item.previousElementSibling.textContent * price
 
         console.log(price);
-        document.querySelector(".total").innerHTML = `Product Total :${proTotal}`
+        item.parentElement.nextElementSibling.nextElementSibling.innerHTML = `Product Total :${proTotal}`
         //*Subtotal hesaplama
         total.forEach(item => {
-            sum += item.textContent
-            console.log(sum)
-            document.querySelector(".subtotal").innerHTML = sum
+            sum += +item.textContent
+
+            document.querySelector(".subtotal").innerHTML = "$" + sum.toFixed(2)
         })
+        //*Tax hesaplama
+        tax = (sum * 0.18).toFixed(2)
+        document.querySelector(".tax").innerHTML = "$" + tax
+        //* ALLtotal hesaplama
+        allTotal = sum + +tax + 19//shipping//
+        document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
+
+
+
 
     })
 })
@@ -39,13 +48,24 @@ minus.forEach(item => {
             proTotal = item.nextElementSibling.textContent * price
 
             console.log(price);
-            document.querySelector(".total").innerHTML = `Product Total :${proTotal}`
+            item.parentElement.nextElementSibling.nextElementSibling.innerHTML = `Product Total :${proTotal}`
+            //*Subtotal hesaplama
+            total.forEach(item => {
+                sum -= +item.textContent
+
+                document.querySelector(".subtotal").innerHTML = "$" + sum.toFixed(2)
+            })
+            //*Tax hesaplama
+            tax = (sum * 0.18).toFixed(2)
+            document.querySelector(".tax").innerHTML = "$" + tax
+            //* ALLtotal hesaplama
+            allTotal = sum + +tax + 19//shipping//
+            document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
 
         }
 
 
     })
-
 
 })
 
