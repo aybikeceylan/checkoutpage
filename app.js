@@ -4,8 +4,7 @@ const remove = document.querySelectorAll(".btnrmv")
 const total = document.querySelectorAll(".pro")
 let sum = 100.98;
 let proTotal;
-// tax;
-// allTotal;
+
 
 plus.forEach(item => {
     item.addEventListener("click", () => {
