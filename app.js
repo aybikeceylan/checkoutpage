@@ -4,6 +4,7 @@ const remove = document.querySelectorAll(".btnrmv")
 const total = document.querySelectorAll(".pro")
 let sum = 100.98;
 let proTotal;
+let shipping = 19;
 
 
 plus.forEach(item => {
@@ -26,7 +27,7 @@ plus.forEach(item => {
         tax = (sum * 0.18).toFixed(2)
         document.querySelector(".tax").innerHTML = "$" + tax
         //* ALLtotal hesaplama
-        allTotal = sum + +tax + 19//shipping//
+        allTotal = sum + +tax + shipping
         document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
 
 
@@ -57,7 +58,7 @@ minus.forEach(item => {
             tax = (sum * 0.18).toFixed(2)
             document.querySelector(".tax").innerHTML = "$" + tax
             //* ALLtotal hesaplama
-            allTotal = sum + +tax + 19//shipping//
+            allTotal = sum + +tax + shipping
             document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
         }
 
@@ -88,8 +89,17 @@ remove.forEach(item => {
         document.querySelector(".tax").innerHTML = "$" + tax
 
         //* ALLtotal hesaplama
-        allTotal = sum + +tax + 19//shipping//
-        document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
+        if (sum == 0) {
+            shipping = 0
+            allTotal = sum + +tax + shipping
+            document.querySelector(".shipping").innerHTML = 0
+            document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
+
+        } else {
+            allTotal = sum + +tax + shipping
+            document.querySelector(".alltotal").innerHTML = "$" + allTotal.toFixed(2)
+        }
+
     })
 })
 
